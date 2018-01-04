@@ -1,0 +1,117 @@
+# *************************************
+#
+#   Functions
+#
+# *************************************
+
+# -------------------------------------
+#   Copy File Contents
+#   -> Copies a files' contents to clipboard
+# -------------------------------------
+#
+# $1 - The file to copy
+#
+# Usage: `copy_file_contents file.txt`
+#
+
+function copy_file_contents() {
+  cat $1 | pbcopy
+  echo "-- '$1' copied to the clipboard! --"
+}
+
+# -------------------------------------
+#   Create Symlink
+#   -> Creates a symlink from two files
+# -------------------------------------
+#
+# $1 - The file to create a symlink from
+# $2 - The file the symlink is to
+#
+# Usage: `create_symlink path/to/file path/to/file`
+#
+
+function create_symlink() {
+  # Create the new file
+  touch $2
+
+  # Copy the original file contents into the new file
+  while read line; do
+   echo $line >> $2
+  done < $1
+
+  # Remove the original file
+  rm $1
+
+  # Create the symlink
+  ln -s $2 $1
+}
+# -------------------------------------
+#   Make Directory & CD
+#   -> Creates a directory and moves into it
+# -------------------------------------
+#
+# Usage: `mcd my-cool-directory`
+#
+
+function mkcd() {
+  mkdir $1 && cd $1
+}
+
+# -------------------------------------
+#   Open
+#   -> Opens a URL
+# -------------------------------------
+#
+# Usage: `o google.com`, `o l 3000`, `o m`
+#
+
+function o() {
+  if [ "$1" == 'l' ]; then
+
+    open http://localhost:$2/$3
+
+  elif [ "$1" == 'm' ]; then
+
+    open http://localhost:4567/$2
+
+  else
+
+    open http://$1
+
+  fi
+}
+
+# -------------------------------------
+#   Server
+#   -> Simple HTTP server from a directory, optionally specifying a port
+# -------------------------------------
+#
+# $1 - the port (optional)
+#
+# Usage: `server`
+#
+
+function server() {
+  local port="${1:-8000}"
+  open "http://localhost:${port}/"
+  python -m SimpleHTTPServer "$port"
+}
+
+# Get gzipped file size
+function gz() {
+  echo "orig size (bytes): "
+  cat "$1" | wc -c
+  echo "gzipped size (bytes): "
+  gzip -c "$1" | wc -c
+}
+
+# Test if HTTP compression (RFC 2616 + SDCH) is enabled for a given URL.
+# Send a fake UA string for sites that sniff it instead of using the Accept-Encoding header. (Looking at you, ajax.googleapis.com!)
+function httpcompression() {
+  encoding="$(curl -LIs -H 'User-Agent: Mozilla/5 Gecko' -H 'Accept-Encoding: gzip,deflate,compress,sdch' "$1" | grep '^Content-Encoding:')" && echo "$1 is encoded using ${encoding#* }" || echo "$1 is not using any encoding"
+}
+
+# Gzip-enabled `curl`
+function gurl() {
+  curl -sH "Accept-Encoding: gzip" "$@" | gunzip
+}

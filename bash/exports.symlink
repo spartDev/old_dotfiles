@@ -1,0 +1,18 @@
+# Make vim the default editor
+export EDITOR=/usr/bin/nano
+export GIT_EDITOR=/usr/bin/nano
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+
+# Node path
+export NODE_PATH=/usr/local/lib/node_modules
+
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"

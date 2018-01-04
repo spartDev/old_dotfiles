@@ -1,0 +1,123 @@
+[user]
+  name = __USER_NAME__
+  email = __USER_EMAIL__
+
+[alias]
+  # View the current working tree status using the short format
+  st = status
+
+  # Switch to a branch, creating it if necessary
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+  ci = commit
+
+  lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
+
+  # Remove branches that have already been merged with master
+  # a.k.a. ‘delete merged’
+  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+  # Amend the currently staged files to the latest commit
+  amend = commit --amend --reuse-message=HEAD
+
+  # Credit an author on the latest commit
+  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+  # reset
+  unstage = reset HEAD              # remove files from index (tracking)
+  uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
+  filelog = log -u                  # show changes to a file
+
+[apply]
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
+
+[core]
+  editor = nano
+
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+  # Make `git rebase` safer on OS X
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  autocrlf = false
+  excludesfile = ~/.gitignore
+
+[diff]
+  mnemonicPrefix = true
+  wordRegex = .
+
+[fetch]
+  recurseSubmodules = on-demand
+
+[grep]
+  extendedRegexp = true
+
+[log]
+  abbrevCommit = true
+
+[merge]
+  conflictStyle = diff3
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+  tool = p4merge
+
+[mergetool]
+  keepBackup = false
+  keepTemporaries = false
+  prompt = false
+
+[pull]
+  # This is GREATâ€¦ when you know what you're doing and are careful
+  # not to pull --no-rebase over a local line containing a true merge.
+  # rebase = true
+  # WARNING! This option, which does away with the one gotcha of
+  # auto-rebasing on pulls, is only available from 1.8.5 onwards.
+  rebase = preserve
+
+[push]
+  default = upstream
+
+[help]
+  # Correct typos
+  autocorrect = 1
+
+[rerere]
+  # If, like me, you like rerere, decomment these
+  # autoupdate = true
+  # enabled = true
+
+[status]
+  # submoduleSummary = true
+  showUntrackedFiles = all
+
+[tag]
+  sort = version:refname
+
+[color]
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold # line info
+  old = red # deletions
+  new = green # additions
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
