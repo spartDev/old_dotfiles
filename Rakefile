@@ -9,7 +9,6 @@ current_step = 0
 
 installation_order = [
   'generate_gitconfig_from_template',
-  'install_command_line_tools',
   'install_symlinks',
   'install_homebrew',
   'install_cask',
