@@ -14,6 +14,10 @@ alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias home="cd ~"
 
+# Projects
+alias pwui="cd ~/Projects/worldia-ui"
+alias ppf="cd ~/Projects/platform"
+
 # ----------------------------------------------------
 #   Miscellaneous
 # ----------------------------------------------------
