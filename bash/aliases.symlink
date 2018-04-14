@@ -24,6 +24,8 @@ alias ppf="cd ~/Projects/platform"
 
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
+alias yarnup="yarn upgrade-interactive --latest"
+
 # be nice
 alias please=sudo
 alias hosts='sudo $EDITOR /etc/hosts'
