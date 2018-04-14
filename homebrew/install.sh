@@ -73,6 +73,10 @@ brew install python
 pip install --upgrade setuptools
 pip install --upgrade pip
 
+# Install `itermocil` to create pre-defined window/pane layouts and run commands in iTerm
+# https://github.com/TomAnthony/itermocil
+brew install TomAnthony/brews/itermocil
+
 # verify
 brew doctor
 
