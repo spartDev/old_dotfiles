@@ -7,9 +7,9 @@
 # ****************************************************
 
 # Set computer name
-COMPUTERNAME="Wichita"
-HOSTNAME='Wichita'
-LOCALHOSTNAME='wichita.local'
+COMPUTERNAME="Chicago"
+HOSTNAME='Chicago'
+LOCALHOSTNAME='Chicago.local'
 
 # Ask for the administrator password upfront
 sudo -v
