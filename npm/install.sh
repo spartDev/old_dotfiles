@@ -17,8 +17,6 @@ packages=(
   stylestats
   svgo
   eslint
-  updtr
-  webpack
   yarn
   yo
 )
