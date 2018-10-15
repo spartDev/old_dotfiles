@@ -165,7 +165,7 @@ task :install_osx_settings, :run do |task, args|
   if response?('y')
     message 'Installing OS X Settings...'
 
-    system 'bash osx/install.sh'
+    system 'bash osx/set-defaults.sh'
 
     run installation_order[current_step] unless args[:run] == 'single'
   end
