@@ -11,10 +11,9 @@
 
 echo "installing apps..."
 
-brew tap caskroom/cask
 brew install brew-cask
-brew tap caskroom/versions
-brew tap caskroom/fonts
+brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
 
 # daily
 brew cask install caffeine 2> /dev/null
