@@ -30,7 +30,7 @@ brew cask install font-sauce-code-powerline 2> /dev/null
 brew cask install font-source-sans-pro 2> /dev/null
 
 # dev
-brew cask install atom 2> /dev/null
+brew cask install visual-studio-code 2> /dev/null
 brew cask install imageoptim 2> /dev/null
 brew cask install transmit 2> /dev/null
 
