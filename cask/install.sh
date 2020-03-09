@@ -21,7 +21,7 @@ brew cask install dashlane 2> /dev/null
 brew cask install slack 2> /dev/null
 brew cask install spectacle 2> /dev/null
 brew cask install docker 2> /dev/null
-brew cask install iterm2 2> /dev/null
+brew cask install hyper 2> /dev/null
 brew cask install boostnote 2> /dev/null
 
 # Fonts
