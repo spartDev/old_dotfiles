@@ -18,8 +18,6 @@ brew tap homebrew/cask-fonts
 # daily
 brew cask install caffeine 2> /dev/null
 brew cask install dashlane 2> /dev/null
-brew cask install dropbox 2> /dev/null
-brew cask install flux 2> /dev/null
 brew cask install slack 2> /dev/null
 brew cask install spectacle 2> /dev/null
 brew cask install docker 2> /dev/null
